@@ -1,12 +1,24 @@
+@import "../../responsive.scss";
+
 .profilePage {
   height: 100%;
   display: flex;
-  justify-content: space-between;
 
-  overflow-y: scroll;
+  @include md {
+    flex-direction: column;
+    overflow: scroll;
+  }
 
   .details {
     flex: 3;
+    overflow-y: scroll;
+    padding-bottom: 50px;
+
+    @include md {
+      overflow: hidden;
+      flex: none;
+      height: max-content;
+    }
 
     .wrapper {
       display: flex;
@@ -22,6 +34,13 @@
           font-size: 24px;
           font-weight: 300;
         }
+
+        button {
+          padding: 12px 20px;
+          background-color: #fece51;
+          cursor: pointer;
+          border: none;
+        }
       }
 
       .info {
@@ -30,6 +49,9 @@
         gap: 20px;
 
         span {
+          display: flex;
+          align-items: center;
+          gap: 10px;
           img {
             width: 50px;
             height: 50px;
@@ -44,8 +66,16 @@
   .chatContainer {
     flex: 2;
     background-color: #fcf5f3;
+    height: 100%;
+
+    @include md {
+      flex: none;
+      height: max-content;
+    }
 
     .wrapper {
+      height: 100%;
+      padding-inline: 50px;
     }
   }
 }
