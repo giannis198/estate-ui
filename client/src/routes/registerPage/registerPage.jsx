@@ -1,16 +1,39 @@
-import "./register.scss";
-import { Link } from "react-router-dom";
+import "./registerPage.scss";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import apiRequest from "../../lib/apiRequest";
 
 function RegisterPage() {
-  const handleSubmit = (e) => {
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const formData = new FormData(e.target);
 
     const username = formData.get("username");
     const email = formData.get("email");
     const password = formData.get("password");
 
-    console.log(username, email, password);
+    try {
+      const res = await apiRequest.post("/auth/register", {
+        username,
+        email,
+        password,
+      });
+
+      console.log(res.data.message);
+      navigate("/login");
+    } catch (error) {
+      setError(error.response.data.message);
+      console.log(error.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -22,6 +45,7 @@ function RegisterPage() {
           <input name="email" type="text" placeholder="Email" />
           <input name="password" type="password" placeholder="Password" />
           <button type="submit">Register</button>
+          {error && <span>{error}</span>}
           <Link to="/login">Do you have an account?</Link>
         </form>
       </div>

@@ -3,6 +3,9 @@ import "./singlePage.scss";
 import { singlePostData, userData } from "../../lib/data";
 import Map from "../../components/map/Map";
 
+
+
+
 function SinglePage() {
   return (
     <div className="singlePage">
