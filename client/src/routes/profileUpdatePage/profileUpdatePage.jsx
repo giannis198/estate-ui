@@ -1,10 +1,13 @@
-import { useContext, useState } from "react";
 import "./profileUpdatePage.scss";
+
+import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
-import { useNavigate } from "react-router-dom";
+
+import UploadWidget from "../../components/uploadWidget/UploadWidget";
 import { dummyImage } from "../../constants";
-// import UploadWidget from "../../components/uploadWidget/UploadWidget";
 
 function ProfileUpdatePage() {
   const { currentUser, updateUser } = useContext(AuthContext);
@@ -68,19 +71,19 @@ function ProfileUpdatePage() {
       <div className="sideContainer">
         <img
           src={avatar[0] || currentUser.avatar || dummyImage}
-          alt=""
+          alt="avatar"
           className="avatar"
         />
-        {/* <UploadWidget
+        <UploadWidget
           uwConfig={{
-            cloudName: "lamadev",
+            cloudName: "djnnqyscr",
             uploadPreset: "estate",
             multiple: false,
             maxImageFileSize: 2000000,
             folder: "avatars",
           }}
           setState={setAvatar}
-        /> */}
+        />
       </div>
     </div>
   );

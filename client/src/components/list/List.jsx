@@ -1,13 +1,16 @@
 import "./list.scss";
 import Card from "../card/Card";
-import { listData } from "../../lib/data";
 
-function List() {
+function List({ posts }) {
   return (
     <div className="list">
-      {listData.map((item) => (
-        <Card className="listItem" key={item.id} item={item} />
-      ))}
+      {posts.length > 0 ? (
+        posts.map((item) => (
+          <Card className="listItem" key={item.id} item={item} />
+        ))
+      ) : (
+        <p>No Posts</p>
+      )}
     </div>
   );
 }

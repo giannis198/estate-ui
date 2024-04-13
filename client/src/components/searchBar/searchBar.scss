@@ -70,19 +70,25 @@
       }
     }
 
-    button {
-      border: none;
+    a {
       background-color: #fece51;
-      cursor: pointer;
       flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        border: none;
+        background-color: #fece51;
+        cursor: pointer;
 
-      @include sm {
-        padding: 10px;
-      }
+        @include sm {
+          padding: 10px;
+        }
 
-      img {
-        width: 24px;
-        height: 24px;
+        img {
+          width: 24px;
+          height: 24px;
+        }
       }
     }
   }

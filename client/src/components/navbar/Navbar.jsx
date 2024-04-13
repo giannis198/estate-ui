@@ -47,8 +47,24 @@ const Navbar = () => {
           <a href="/">About</a>
           <a href="/">Contact</a>
           <a href="/">Agents</a>
-          <a href="/">Sign In</a>
-          <a href="/">Sign Up</a>
+          {currentUser ? (
+            <div className="user">
+              <img src={currentUser.avatar || dummyImage} alt="" />
+              <span>{currentUser.username}</span>
+
+              <Link to="/profile" className="profile">
+                <div className="notification">3</div>
+                <span>Profile</span>
+              </Link>
+            </div>
+          ) : (
+            <>
+              <a href="/login">Sign In</a>
+              <a href="/register" className="register">
+                Sign Up
+              </a>
+            </>
+          )}
         </div>
       </div>
     </nav>

@@ -29,7 +29,6 @@ function LoginPage() {
       });
 
       updateUser(res.data);
-
       navigate("/");
     } catch (error) {
       setMessage(error.response.data.message);
